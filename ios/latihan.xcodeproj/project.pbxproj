@@ -35,6 +35,19 @@
 		BFE4139278F0440CB72E6C83 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8335C7CEFC746C3B0E3535A /* rubicon-icon-font.ttf */; };
 		3146AF9BAA024795A72FDC13 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC0FD70629DF45338FEF8BF2 /* SimpleLineIcons.ttf */; };
 		B9E1B822E8B548B2BF0C812F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4028A2A1ECD54B278F31DC9D /* Zocial.ttf */; };
+		57109BDC5EE7405F8801A814 /* Gotham Medium Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDDB1BC9D1A94520BD0A0E8D /* Gotham Medium Regular.ttf */; };
+		C08954BA3E574F3AA9CAA0A9 /* NewYorkPlain.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA616EBFCD0449999720191 /* NewYorkPlain.ttf */; };
+		3F73597B28F84428A0E6679E /* SanFranciscoPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E05EA88FBBD14DE3B4AAE7C2 /* SanFranciscoPro.ttf */; };
+		E77E6FBFB7864B3C839C4410 /* Gotham Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2E437669C4242C2A994E680 /* Gotham Medium.ttf */; };
+		5CBD751D6EB24F8BA8A37A27 /* New York.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFD78983B57649E19411008E /* New York.ttf */; };
+		490CA9BEC43A4171ADC36E21 /* Gotham_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A9E9858383F4371B2CFEB4C /* Gotham_Medium.ttf */; };
+		CA93934B79A4441CA7BBCD81 /* GrenzeGotisch-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C1136A01043769B442FC6 /* GrenzeGotisch-VariableFont_wght.ttf */; };
+		F364ED51450F4CC2A9D1646E /* Gotham_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45ED54755A124A54A95BA047 /* Gotham_Medium.ttf */; };
+		A0B602436C8B4EA3B21D4919 /* GrenzeGotisch-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F009879437E4774880CA805 /* GrenzeGotisch-VariableFont_wght.ttf */; };
+		91ABB1E33E8C43FDA91913B6 /* SanFranciscoPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E45E278169B6494992A196C0 /* SanFranciscoPro.ttf */; };
+		F0D5CBFE87C247E78230D64E /* GrenzeGotischVariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */; };
+		318B32A538764744A93AF1A7 /* Fondamento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */; };
+		C2BD49A8FA724B369A43D70B /* Fondamento-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +102,19 @@
 		E8335C7CEFC746C3B0E3535A /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		DC0FD70629DF45338FEF8BF2 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4028A2A1ECD54B278F31DC9D /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DDDB1BC9D1A94520BD0A0E8D /* Gotham Medium Regular.ttf */ = {isa = PBXFileReference; name = "Gotham Medium Regular.ttf"; path = "../src/assets/fonts/Gotham Medium Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FCA616EBFCD0449999720191 /* NewYorkPlain.ttf */ = {isa = PBXFileReference; name = "NewYorkPlain.ttf"; path = "../src/assets/fonts/NewYorkPlain.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E05EA88FBBD14DE3B4AAE7C2 /* SanFranciscoPro.ttf */ = {isa = PBXFileReference; name = "SanFranciscoPro.ttf"; path = "../src/assets/fonts/SanFranciscoPro.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C2E437669C4242C2A994E680 /* Gotham Medium.ttf */ = {isa = PBXFileReference; name = "Gotham Medium.ttf"; path = "../src/assets/fonts/Gotham Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DFD78983B57649E19411008E /* New York.ttf */ = {isa = PBXFileReference; name = "New York.ttf"; path = "../src/assets/fonts/New York.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9A9E9858383F4371B2CFEB4C /* Gotham_Medium.ttf */ = {isa = PBXFileReference; name = "Gotham_Medium.ttf"; path = "../src/assets/fonts/Gotham_Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7A9C1136A01043769B442FC6 /* GrenzeGotisch-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "GrenzeGotisch-VariableFont_wght.ttf"; path = "../src/assets/fonts/GrenzeGotisch-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45ED54755A124A54A95BA047 /* Gotham_Medium.ttf */ = {isa = PBXFileReference; name = "Gotham_Medium.ttf"; path = "../assets/fonts/Gotham_Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F009879437E4774880CA805 /* GrenzeGotisch-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "GrenzeGotisch-VariableFont_wght.ttf"; path = "../assets/fonts/GrenzeGotisch-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E45E278169B6494992A196C0 /* SanFranciscoPro.ttf */ = {isa = PBXFileReference; name = "SanFranciscoPro.ttf"; path = "../assets/fonts/SanFranciscoPro.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */ = {isa = PBXFileReference; name = "GrenzeGotischVariableFont_wght.ttf"; path = "../assets/fonts/GrenzeGotischVariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */ = {isa = PBXFileReference; name = "Fondamento-Regular.ttf"; path = "../assets/fonts/Fondamento-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */ = {isa = PBXFileReference; name = "Fondamento-Italic.ttf"; path = "../assets/fonts/Fondamento-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +244,19 @@
 				E8335C7CEFC746C3B0E3535A /* rubicon-icon-font.ttf */,
 				DC0FD70629DF45338FEF8BF2 /* SimpleLineIcons.ttf */,
 				4028A2A1ECD54B278F31DC9D /* Zocial.ttf */,
+				DDDB1BC9D1A94520BD0A0E8D /* Gotham Medium Regular.ttf */,
+				FCA616EBFCD0449999720191 /* NewYorkPlain.ttf */,
+				E05EA88FBBD14DE3B4AAE7C2 /* SanFranciscoPro.ttf */,
+				C2E437669C4242C2A994E680 /* Gotham Medium.ttf */,
+				DFD78983B57649E19411008E /* New York.ttf */,
+				9A9E9858383F4371B2CFEB4C /* Gotham_Medium.ttf */,
+				7A9C1136A01043769B442FC6 /* GrenzeGotisch-VariableFont_wght.ttf */,
+				45ED54755A124A54A95BA047 /* Gotham_Medium.ttf */,
+				2F009879437E4774880CA805 /* GrenzeGotisch-VariableFont_wght.ttf */,
+				E45E278169B6494992A196C0 /* SanFranciscoPro.ttf */,
+				C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */,
+				8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */,
+				E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -380,6 +419,19 @@
 				BFE4139278F0440CB72E6C83 /* rubicon-icon-font.ttf in Resources */,
 				3146AF9BAA024795A72FDC13 /* SimpleLineIcons.ttf in Resources */,
 				B9E1B822E8B548B2BF0C812F /* Zocial.ttf in Resources */,
+				57109BDC5EE7405F8801A814 /* Gotham Medium Regular.ttf in Resources */,
+				C08954BA3E574F3AA9CAA0A9 /* NewYorkPlain.ttf in Resources */,
+				3F73597B28F84428A0E6679E /* SanFranciscoPro.ttf in Resources */,
+				E77E6FBFB7864B3C839C4410 /* Gotham Medium.ttf in Resources */,
+				5CBD751D6EB24F8BA8A37A27 /* New York.ttf in Resources */,
+				490CA9BEC43A4171ADC36E21 /* Gotham_Medium.ttf in Resources */,
+				CA93934B79A4441CA7BBCD81 /* GrenzeGotisch-VariableFont_wght.ttf in Resources */,
+				F364ED51450F4CC2A9D1646E /* Gotham_Medium.ttf in Resources */,
+				A0B602436C8B4EA3B21D4919 /* GrenzeGotisch-VariableFont_wght.ttf in Resources */,
+				91ABB1E33E8C43FDA91913B6 /* SanFranciscoPro.ttf in Resources */,
+				F0D5CBFE87C247E78230D64E /* GrenzeGotischVariableFont_wght.ttf in Resources */,
+				318B32A538764744A93AF1A7 /* Fondamento-Regular.ttf in Resources */,
+				C2BD49A8FA724B369A43D70B /* Fondamento-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
