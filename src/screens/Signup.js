@@ -7,16 +7,16 @@ import styles from '../styles/Auth-style';
 import background from '../public/images/auth-background.jpg';
 import logo from '../public/images/logo-auth.png';
 
-class Login extends Component {
+class Signup extends Component {
   constructor(props){
     super(props);
     this.state = {
         keyboardOpen: ''
     };
+    console.log(this.state,['coba'])
   }
-
   _onPressButton = () => {
-    console.log('Login');
+    console.log('Signup');
   }
 
   _onKeyboardWillShow = () => {
@@ -57,7 +57,7 @@ class Login extends Component {
       }
 
       <View style={styles.wrapperForm}>
-        <Text style={styles.formTitle}>Login</Text>
+        <Text style={styles.formTitle}>Signup</Text>
         <View style={styles.formBox}>
             <Form style={styles.form}>
               <Item floatingLabel last>
@@ -69,19 +69,19 @@ class Login extends Component {
                 <Input secureTextEntry={true} style={styles.formInput}/>
               </Item>
               <Button style={styles.button} block onPress={this._onPressButton}>
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Signup</Text>
               </Button>
             </Form>
         </View>
       </View>
 
       <View style={styles.wrapperOnpress}>
-        <Text style={styles.onpressText}>Dont have an account yet?</Text>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Signup')}><Text style={styles.onpressTouch}>Signup</Text></TouchableOpacity>
+        <Text style={styles.onpressText}>Have an account yet?</Text>
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}><Text style={styles.onpressTouch}>Login</Text></TouchableOpacity>
       </View>
     </ImageBackground>
     );
   }
 }
 
-export default Login
+export default Signup
