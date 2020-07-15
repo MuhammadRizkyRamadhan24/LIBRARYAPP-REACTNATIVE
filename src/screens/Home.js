@@ -9,14 +9,14 @@ class Home extends Component {
         };
     }
 
-    // componentDidMount(){
-    //     setTimeout(() =>{
-    //         this.setState({
-    //             count: 1
-    //         })
-    //     }, 5000)
-    //     console.log('did mount')
-    // }
+    componentDidMount(){
+        setTimeout(() =>{
+            this.setState({
+                count: 1
+            })
+        }, 1000)
+        console.log('did mount')
+    }
     
     render() {
         return (
