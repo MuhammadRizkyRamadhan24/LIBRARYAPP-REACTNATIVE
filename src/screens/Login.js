@@ -49,7 +49,7 @@ class Login extends Component {
       </View>
       </View>
       : 
-      <View style={{flex: 2}}>
+      <View style={styles.wrapperLogo}>
         <View style={styles.logo}>
           <Image source={logo} style={styles.logoClose}></Image>
         </View>
@@ -68,7 +68,7 @@ class Login extends Component {
                 <Label style={styles.formLabel}>Password</Label>
                 <Input secureTextEntry={true} style={styles.formInput}/>
               </Item>
-              <Button style={styles.button} block onPress={this._onPressButton}>
+              <Button style={styles.button} block onPress={()=> this.props.navigation.navigate('Home')}>
                 <Text style={styles.buttonText}>Login</Text>
               </Button>
             </Form>
