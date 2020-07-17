@@ -48,6 +48,7 @@
 		F0D5CBFE87C247E78230D64E /* GrenzeGotischVariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */; };
 		318B32A538764744A93AF1A7 /* Fondamento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */; };
 		C2BD49A8FA724B369A43D70B /* Fondamento-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */; };
+		C48F7998378A4821B832B76E /* NewYorkPlain.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FFD456DD8F543329BE28544 /* NewYorkPlain.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */ = {isa = PBXFileReference; name = "GrenzeGotischVariableFont_wght.ttf"; path = "../assets/fonts/GrenzeGotischVariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */ = {isa = PBXFileReference; name = "Fondamento-Regular.ttf"; path = "../assets/fonts/Fondamento-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */ = {isa = PBXFileReference; name = "Fondamento-Italic.ttf"; path = "../assets/fonts/Fondamento-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2FFD456DD8F543329BE28544 /* NewYorkPlain.ttf */ = {isa = PBXFileReference; name = "NewYorkPlain.ttf"; path = "../assets/fonts/NewYorkPlain.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				C79ED9B0BA81424CA3816335 /* GrenzeGotischVariableFont_wght.ttf */,
 				8CBFA20EA5F04F65A40E23C9 /* Fondamento-Regular.ttf */,
 				E67DCDDD17CC428AB18E34ED /* Fondamento-Italic.ttf */,
+				2FFD456DD8F543329BE28544 /* NewYorkPlain.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				F0D5CBFE87C247E78230D64E /* GrenzeGotischVariableFont_wght.ttf in Resources */,
 				318B32A538764744A93AF1A7 /* Fondamento-Regular.ttf in Resources */,
 				C2BD49A8FA724B369A43D70B /* Fondamento-Italic.ttf in Resources */,
+				C48F7998378A4821B832B76E /* NewYorkPlain.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
