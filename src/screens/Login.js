@@ -11,12 +11,16 @@ class Login extends Component {
   constructor(props){
     super(props);
     this.state = {
-        keyboardOpen: ''
+        keyboardOpen: '',
+        isLogin: false,
     };
   }
 
   _onPressButton = () => {
-    console.log('Login');
+    this.setState({
+      isLogin: true,
+    })
+    console.log(this.state.isLogin);
   }
 
   _onKeyboardWillShow = () => {
@@ -40,7 +44,6 @@ class Login extends Component {
         onDidShow={this._onKeyboardWillShow}
         onDidHide={this._onKeyboardWillHide}
       />
-        
       {this.state.keyboardOpen == 'open'
       ? 
       <View style={styles.wrapperLogo}>
@@ -68,7 +71,7 @@ class Login extends Component {
                 <Label style={styles.formLabel}>Password</Label>
                 <Input secureTextEntry={true} style={styles.formInput}/>
               </Item>
-              <Button style={styles.button} block onPress={()=> this.props.navigation.navigate('Home')}>
+              <Button style={styles.button} block /*onPress={this.props.login}*/ onPress={()=> this.props.navigation.navigate('Dashboard')}>
                 <Text style={styles.buttonText}>Login</Text>
               </Button>
             </Form>
