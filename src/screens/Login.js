@@ -1,40 +1,66 @@
 import React, {Component} from 'react';
-import { View ,Image ,Text, ImageBackground, TouchableOpacity } from 'react-native';
-import { Form, Item, Input, Label, Button } from 'native-base';
+import { View ,Image ,Text, ImageBackground, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Form, Item, Input, Label, Button , Toast } from 'native-base';
 import KeyboardListener from 'react-native-keyboard-listener';
 
 import styles from '../styles/Auth-style';
 import background from '../public/images/auth-background.jpg';
 import logo from '../public/images/logo-auth.png';
 
+import { connect } from 'react-redux';
+import { login } from '../redux/actions/auth';
+
 class Login extends Component {
   constructor(props){
     super(props);
     this.state = {
         keyboardOpen: '',
-        isLogin: false,
+        username: '',
+        password: '',
+        showToast: false,
     };
   }
 
-  _onPressButton = () => {
-    this.setState({
-      isLogin: true,
-    })
-    console.log(this.state.isLogin);
+  loginUser = (e) => {
+    e.preventDefault();
+    const data = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    this.props
+      .login(data)
+      .then((res) => {
+        console.log(res);
+        Toast.show({
+          text: 'Login Success',
+          position: 'bottom',
+        });
+        return this.goToDashboard();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.response);
+        Toast.show({
+          text: 'Username or Password is Invalid',
+          position: 'bottom',
+        });
+      });
+  };
+
+  goToDashboard = () =>{
+    this.props.navigation.navigate('Dashboard')
   }
 
   _onKeyboardWillShow = () => {
     this.setState({
       keyboardOpen: 'open'
     });
-    console.log(this.state.keyboardOpen)
   }
 
   _onKeyboardWillHide = () => {
     this.setState({
       keyboardOpen: 'close'
     });
-    console.log(this.state.keyboardOpen)
   }
 
   render() {
@@ -63,15 +89,15 @@ class Login extends Component {
         <Text style={styles.formTitle}>Login</Text>
         <View style={styles.formBox}>
             <Form style={styles.form}>
-              <Item floatingLabel last>
+              <Item>
                 <Label style={styles.formLabel}>Username</Label>
-                <Input style={styles.formInput}/>
+                <Input value={this.state.username} onChangeText={(val) => this.setState({username: val})} style={styles.formInput}/>
               </Item>
-              <Item floatingLabel last>
+              <Item>
                 <Label style={styles.formLabel}>Password</Label>
-                <Input secureTextEntry={true} style={styles.formInput}/>
+                <Input value={this.state.password} onChangeText={(val) => this.setState({password: val})} secureTextEntry={true} style={styles.formInput}/>
               </Item>
-              <Button style={styles.button} block /*onPress={this.props.login}*/ onPress={()=> this.props.navigation.navigate('Dashboard')}>
+              <Button typr='submit' style={styles.button} block onPress={this.loginUser}>
                 <Text style={styles.buttonText}>Login</Text>
               </Button>
             </Form>
@@ -87,4 +113,12 @@ class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+const mapDispatchToProps = {login};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+// export default Login

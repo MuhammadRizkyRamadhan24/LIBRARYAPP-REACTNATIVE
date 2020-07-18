@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../components/card'
-import {View, Text, StyleSheet, Button, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 
 class Home extends Component {
     constructor(props){
@@ -51,8 +51,6 @@ class Home extends Component {
 
     componentDidMount(){
         this.date();
-        console.log('did mount');
-        
     }
     
     render() {
