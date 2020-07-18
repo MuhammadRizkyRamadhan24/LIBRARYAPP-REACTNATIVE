@@ -6,6 +6,12 @@ import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
 import History from './src/screens/History';
 import BookDetail from './src/screens/BookDetail';
+import { Root } from 'native-base'
+
+import {Provider} from 'react-redux';
+import storage from './src/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
+const {store, persistor} = storage;
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -38,24 +44,30 @@ const App = (props) => {
   // }
   return (
     <>
-    <NavigationContainer>
-      <Stack.Navigator>
-        {/* {!isLogin ? 
-        (<>
-          <Stack.Screen name="Login"  options={{ headerTransparent: true, headerShown: false }}>{props => <Login {...props} login={login} />}</Stack.Screen>
-          <Stack.Screen name="Signup" component={Signup} options={{ headerTransparent: true, headerShown: false }}/>
-        </>)
-        : 
-        (<>
-          <Stack.Screen name="Main" component={BottomTab} options={{ headerTransparent: true, headerShown: false }}/>
-        </>)} */}
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <NavigationContainer>
+          <Root>
+          <Stack.Navigator>
+            {/* {!isLogin ? 
+            (<>
+              <Stack.Screen name="Login"  options={{ headerTransparent: true, headerShown: false }}>{props => <Login {...props} login={login} />}</Stack.Screen>
+              <Stack.Screen name="Signup" component={Signup} options={{ headerTransparent: true, headerShown: false }}/>
+            </>)
+            : 
+            (<>
+              <Stack.Screen name="Main" component={BottomTab} options={{ headerTransparent: true, headerShown: false }}/>
+            </>)} */}
 
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
-        <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }}/>
-        <Stack.Screen name="Dashboard" component={BottomTab} options={{headerShown: false}}/>
-        <Stack.Screen name="BookDetail" component={BookDetail} options={{headerShown: false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+            <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }}/>
+            <Stack.Screen name="Dashboard" component={BottomTab} options={{headerShown: false}}/>
+            <Stack.Screen name="BookDetail" component={BookDetail} options={{headerShown: false}}/>
+          </Stack.Navigator>
+          </Root>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
     </>
   );
 };
