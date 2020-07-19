@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Card from '../components/card'
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 
+import { connect } from 'react-redux';
+import { latestBooks,newArrivals } from '../redux/actions/books';
+
 class Home extends Component {
     constructor(props){
         super(props);
@@ -29,7 +32,35 @@ class Home extends Component {
             monthyear: null,
             day: null,
             dayName: null,
+            bookNew: [],
+            bookOld: []
         }
+    }
+
+    newArrivals = () => {
+        const token = this.props.auth.data.token;
+        console.log(this.props.auth,'auth');
+        this.props
+        .newArrivals(token)
+        .then(()=>{
+            this.setState({
+                bookNew : this.props.books.dataNew
+            })
+            console.log(this.props.books,'data')
+        });
+    }
+
+    latestBooks = () => {
+        const token = this.props.auth.data.token;
+        console.log(this.props.auth,'auth');
+        this.props
+        .latestBooks(token)
+        .then(()=>{
+            this.setState({
+                bookOld : this.props.books.dataOld
+            })
+            console.log(this.props.books,'data')
+        });
     }
 
     date = () =>{
@@ -51,9 +82,12 @@ class Home extends Component {
 
     componentDidMount(){
         this.date();
+        this.newArrivals();
+        this.latestBooks();
     }
     
     render() {
+        console.log(this.props)
         return (
         <View style={{flex: 1,backgroundColor: '#131212'}}>
             <View style={{flex: 2,flexDirection: 'row'}}>
@@ -78,7 +112,7 @@ class Home extends Component {
             </View>
             <View style={{flex: 7, flexDirection: "row"}}>
                 <ScrollView horizontal={true}>
-                {this.state.books.map((value)=>{
+                {this.state.bookNew.map((value)=>{
                 return(
                 <View key={value}>
                     <Card data={value} navigation={this.props.navigation}/>
@@ -97,7 +131,7 @@ class Home extends Component {
             </View>
             <View style={{flex: 7, flexDirection: "row"}}>
                 <ScrollView horizontal={true}>
-                {this.state.books.map((value)=>{
+                {this.state.bookOld.map((value)=>{
                     return(
                     <View key={value}>
                         <Card data={value} navigation={this.props.navigation}/>
@@ -110,5 +144,13 @@ class Home extends Component {
         )
     }
 }
+const mapStateToProps = state =>({
+    auth: state.auth,
+    books: state.books
+});
 
-export default Home;
+const mapDispatchToProps = { latestBooks,newArrivals };
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
+
+// export default Home;

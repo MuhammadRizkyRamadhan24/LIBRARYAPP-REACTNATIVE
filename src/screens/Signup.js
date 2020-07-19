@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import { View ,Image ,Text, ImageBackground, TouchableOpacity } from 'react-native';
-import { Form, Item, Input, Label, Button } from 'native-base';
+import { Form, Item, Input, Label, Button, Toast } from 'native-base';
 import KeyboardListener from 'react-native-keyboard-listener';
+
+import { connect } from 'react-redux';
+import { register } from '../redux/actions/auth';
 
 import styles from '../styles/Auth-style';
 import background from '../public/images/auth-background.jpg';
@@ -11,12 +14,41 @@ class Signup extends Component {
   constructor(props){
     super(props);
     this.state = {
-        keyboardOpen: ''
+        keyboardOpen: '',
+        username:'',
+        password:'',
+        showToast: false,
     };
     console.log(this.state,['coba'])
   }
-  _onPressButton = () => {
-    console.log('Signup');
+
+  signupUser = (e) => {
+    e.preventDefault();
+    const data = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    this.props
+      .register(data)
+      .then((res) => {
+        console.log(res);
+        Toast.show({
+          text: 'Register Success',
+          position: 'bottom',
+        });
+        return this.goToLogin();
+      })
+      .catch((err) => {
+        console.log(err);
+        Toast.show({
+          text: 'Register Failed',
+          position: 'bottom',
+        });
+      });
+  };
+
+  goToLogin = () =>{
+    this.props.navigation.navigate('Login');
   }
 
   _onKeyboardWillShow = () => {
@@ -62,13 +94,13 @@ class Signup extends Component {
             <Form style={styles.form}>
               <Item floatingLabel last>
                 <Label style={styles.formLabel}>Username</Label>
-                <Input style={styles.formInput}/>
+                <Input value={this.state.username} onChangeText={(val) => this.setState({username: val})} style={styles.formInput}/>
               </Item>
               <Item floatingLabel last>
                 <Label style={styles.formLabel}>Password</Label>
-                <Input secureTextEntry={true} style={styles.formInput}/>
+                <Input value={this.state.password} onChangeText={(val) => this.setState({password: val})} secureTextEntry={true} style={styles.formInput}/>
               </Item>
-              <Button style={styles.button} block onPress={this._onPressButton}>
+              <Button style={styles.button} block onPress={this.signupUser}>
                 <Text style={styles.buttonText}>Signup</Text>
               </Button>
             </Form>
@@ -77,11 +109,19 @@ class Signup extends Component {
 
       <View style={styles.wrapperOnpress}>
         <Text style={styles.onpressText}>Have an account yet?</Text>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}><Text style={styles.onpressTouch}>Login</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.goToLogin}><Text style={styles.onpressTouch}>Login</Text></TouchableOpacity>
       </View>
     </ImageBackground>
     );
   }
 }
 
-export default Signup
+// export default Signup
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+})
+
+const mapDispatchToProps = {register};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

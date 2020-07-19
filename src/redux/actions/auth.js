@@ -19,7 +19,7 @@ export const register = (data) => {
     type: 'REGISTER',
     payload: axios({
       method: 'POST',
-      url: 'http://192.168.56.1:3000/auth/register',
+      url: API_URL + 'auth/register',
       data: {
         username: data.username,
         password: data.password,

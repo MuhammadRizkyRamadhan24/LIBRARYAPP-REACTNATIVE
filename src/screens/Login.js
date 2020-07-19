@@ -48,7 +48,7 @@ class Login extends Component {
   };
 
   goToDashboard = () =>{
-    this.props.navigation.navigate('Dashboard')
+    this.props.navigation.navigate('Dashboard');
   }
 
   _onKeyboardWillShow = () => {
@@ -97,7 +97,7 @@ class Login extends Component {
                 <Label style={styles.formLabel}>Password</Label>
                 <Input value={this.state.password} onChangeText={(val) => this.setState({password: val})} secureTextEntry={true} style={styles.formInput}/>
               </Item>
-              <Button typr='submit' style={styles.button} block onPress={this.loginUser}>
+              <Button style={styles.button} block onPress={this.loginUser}>
                 <Text style={styles.buttonText}>Login</Text>
               </Button>
             </Form>
