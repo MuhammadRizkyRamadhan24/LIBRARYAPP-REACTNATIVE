@@ -4,7 +4,8 @@ const initialState = {
     errorMsg: '',
     dataNew: [],
     dataOld: [],
-    dataById:[]
+    dataById:[],
+    data:[]
   };
   
   const books = (state = initialState, action) => {
@@ -72,8 +73,92 @@ const initialState = {
           dataById: action.payload.data.data,
         };
 
-      default:
-        return state;
+    case "SEARCH_PENDING":
+        return {
+          ...state,
+          isLoading: true,
+          isError: false
+        };
+    case "SEARCH_REJECTED":
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+          errorMsg: 'Data Rejected'
+        };
+    case "SEARCH_FULFILLED":
+        return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          data: action.payload.data.data
+        };
+      
+    case "ADDBOOK_PENDING":
+        return {
+          ...state,
+          isLoading: true,
+          isError: false
+        };
+    case "ADDBOOK_REJECTED":
+        return {
+          ...state,
+          isLoading: false,
+          isError: true,
+          errorMsg: 'Data Rejected'
+        };
+    case "ADDBOOK_FULFILLED":
+        return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          data: action.payload.data.data[0]
+        };
+
+    case "EDITBOOK_PENDING":
+          return {
+            ...state,
+            isLoading: true,
+            isError: false
+        };
+    case "EDITBOOK_REJECTED":
+          return {
+            ...state,
+            isLoading: false,
+            isError: true,
+            errorMsg: 'Data Rejected'
+        };
+    case "EDITBOOK_FULFILLED":
+          return {
+            ...state,
+            isLoading: false,
+            isError: false,
+            data: action.payload.data.data[0]
+        };
+
+    case "DELETEDATABYID_PENDING":
+          return {
+            ...state,
+            isLoading: true,
+            isError: false
+        };
+    case "DELETEDATABYID_REJECTED":
+          return {
+            ...state,
+            isLoading: false,
+            isError: true,
+            errorMsg: 'Data Rejected'
+        };
+    case "DELETEDATABYID_FULFILLED":
+          return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          data: action.payload.data.data
+        };
+
+    default:
+      return state;
     }
   };
   
