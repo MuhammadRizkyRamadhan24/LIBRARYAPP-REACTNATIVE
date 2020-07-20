@@ -6,7 +6,9 @@ import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
 import History from './src/screens/History';
 import BookDetail from './src/screens/BookDetail';
-import { Root } from 'native-base'
+import AddBook from './src/screens/Add';
+import EditBook from './src/screens/Edit';
+import { Root } from 'native-base';
 
 import {Provider} from 'react-redux';
 import storage from './src/redux/store';
@@ -16,11 +18,13 @@ const {store, persistor} = storage;
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const BottomTab = () =>{
   return(
@@ -38,10 +42,6 @@ const BottomTab = () =>{
 }
 
 const App = (props) => {
-  // const [isLogin, setIsLogin] = useState(false);
-  // login = () => {
-  //   setIsLogin(true)
-  // }
   return (
     <>
     <Provider store={store}>
@@ -49,20 +49,12 @@ const App = (props) => {
         <NavigationContainer>
           <Root>
           <Stack.Navigator>
-            {/* {!isLogin ? 
-            (<>
-              <Stack.Screen name="Login"  options={{ headerTransparent: true, headerShown: false }}>{props => <Login {...props} login={login} />}</Stack.Screen>
-              <Stack.Screen name="Signup" component={Signup} options={{ headerTransparent: true, headerShown: false }}/>
-            </>)
-            : 
-            (<>
-              <Stack.Screen name="Main" component={BottomTab} options={{ headerTransparent: true, headerShown: false }}/>
-            </>)} */}
-
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
             <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }}/>
             <Stack.Screen name="Dashboard" component={BottomTab} options={{headerShown: false}}/>
             <Stack.Screen name="BookDetail" component={BookDetail} options={{headerShown: false}}/>
+            <Stack.Screen name="AddBook" component={AddBook} options={{ headerShown: false }}/>
+            <Stack.Screen name="EditBook" component={EditBook} options={{ headerShown: false }}/>
           </Stack.Navigator>
           </Root>
         </NavigationContainer>

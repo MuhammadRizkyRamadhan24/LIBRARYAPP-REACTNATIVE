@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../components/card'
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
-
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { latestBooks,newArrivals } from '../redux/actions/books';
 
@@ -9,26 +9,6 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
-            books: [
-                {
-                    id: 1,
-                    title: '78 Resep MPASI',
-                    author: 'dr. Meta Hanindita, Sp.A',
-                    bookImage: 'https://cdn.gramedia.com/uploads/items/9786020643250_Mommyclopedia_5_78_Resep_MAPASI_C_1_4-1.jpg'
-                },
-                {
-                    id: 2,
-                    title: 'Be Creative Kidpreneur',
-                    author: 'Ana Widyastuti, M.pd',
-                    bookImage: 'https://cdn.gramedia.com/uploads/items/9786230017896_Cover_Be_Creative_Kidpreneur.jpg'
-                },
-                {
-                    id: 3,
-                    title: 'Promil Tanpa Galau',
-                    author: 'Teman Bumil',
-                    bookImage: 'https://cdn.gramedia.com/uploads/items/9786020523569_Promil_Tanpa_Galau_ACC_R3_Bleed_UV-1.jpg'
-                }
-            ],
             monthyear: null,
             day: null,
             dayName: null,
@@ -91,15 +71,16 @@ class Home extends Component {
         return (
         <View style={{flex: 1,backgroundColor: '#131212'}}>
             <View style={{flex: 2,flexDirection: 'row'}}>
-                <View style={{height:81, width:65,marginLeft:27,justifyContent: 'center',alignItems: 'center'}}>
+                <View style={{height:81, width:80,marginLeft:27,justifyContent: 'center',alignItems: 'center'}}>
                     <Text style={{fontFamily: 'Gotham_Medium',fontSize: 70,color: 'white'}}>{this.state.day}</Text>                
                 </View>
                 <View style={{height:81, width:130,justifyContent: 'center',flexDirection: 'column'}}>                
                     <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.state.dayName}</Text>
                     <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.state.monthyear}</Text>
                 </View>
-                <View style={{ height:81, width:173}}>
-
+                <View style={{height:81, width:159,justifyContent:'flex-end', alignItems:'center',flexDirection:'row'}}>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('AddBook')}><MaterialIcons name='collections-bookmark' color='white' size={30} /></TouchableOpacity>
+                    <TouchableOpacity style={{marginLeft: 15}}><MaterialIcons name='settings' color='white' size={30} /></TouchableOpacity>
                 </View>
             </View>
             <View style={{flex: 1, flexDirection: "row"}}>
@@ -111,7 +92,7 @@ class Home extends Component {
                 </View>   
             </View>
             <View style={{flex: 7, flexDirection: "row"}}>
-                <ScrollView horizontal={true}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 {this.state.bookNew.map((value)=>{
                 return(
                 <View key={value}>
@@ -130,7 +111,7 @@ class Home extends Component {
                 </View>   
             </View>
             <View style={{flex: 7, flexDirection: "row"}}>
-                <ScrollView horizontal={true}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 {this.state.bookOld.map((value)=>{
                     return(
                     <View key={value}>
