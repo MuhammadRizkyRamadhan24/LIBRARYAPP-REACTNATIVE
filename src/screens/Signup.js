@@ -17,6 +17,7 @@ class Signup extends Component {
         keyboardOpen: '',
         username:'',
         password:'',
+        role: 0,
         showToast: false,
     };
     console.log(this.state,['coba'])
@@ -27,6 +28,7 @@ class Signup extends Component {
     const data = {
       username: this.state.username,
       password: this.state.password,
+      role: this.state.role
     };
     this.props
       .register(data)
@@ -92,11 +94,11 @@ class Signup extends Component {
         <Text style={styles.formTitle}>Signup</Text>
         <View style={styles.formBox}>
             <Form style={styles.form}>
-              <Item floatingLabel last>
+              <Item>
                 <Label style={styles.formLabel}>Username</Label>
                 <Input value={this.state.username} onChangeText={(val) => this.setState({username: val})} style={styles.formInput}/>
               </Item>
-              <Item floatingLabel last>
+              <Item>
                 <Label style={styles.formLabel}>Password</Label>
                 <Input value={this.state.password} onChangeText={(val) => this.setState({password: val})} secureTextEntry={true} style={styles.formInput}/>
               </Item>

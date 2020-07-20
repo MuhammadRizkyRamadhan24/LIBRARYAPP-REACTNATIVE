@@ -23,6 +23,7 @@ export const register = (data) => {
       data: {
         username: data.username,
         password: data.password,
+        role: data.role
       },
     }),
   };
