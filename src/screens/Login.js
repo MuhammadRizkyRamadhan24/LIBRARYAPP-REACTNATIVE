@@ -17,7 +17,7 @@ class Login extends Component {
         keyboardOpen: '',
         username: '',
         password: '',
-        showToast: false,
+        showToast: false
     };
   }
 
@@ -31,20 +31,28 @@ class Login extends Component {
       .login(data)
       .then((res) => {
         console.log(res);
-        Toast.show({
-          text: 'Login Success',
-          position: 'bottom',
-        });
-        return this.goToDashboard();
-      })
-      .catch((err) => {
+        if(this.props.auth.isLoading == true){
+          return(
+            <View style={{flex: 1,backgroundColor: '#131212',justifyContent:'center',alignItems:'center'}}>
+                <Spinner color='white' />
+            </View>
+          )
+        } else {
+          Toast.show({
+            text: 'Login Success',
+            position: 'bottom',
+          });
+          return this.goToDashboard();
+        }
+        })
+        .catch((err) => {
         console.log(err);
         console.log(err.response);
         Toast.show({
           text: 'Username or Password is Invalid',
           position: 'bottom',
+          });
         });
-      });
   };
 
   goToDashboard = () =>{
