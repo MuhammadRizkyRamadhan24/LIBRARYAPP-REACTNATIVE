@@ -8,8 +8,9 @@ import History from './src/screens/History';
 import BookDetail from './src/screens/BookDetail';
 import AddBook from './src/screens/Add';
 import EditBook from './src/screens/Edit';
-import { Root } from 'native-base';
+import Settings from './src/screens/Settings'
 
+import { Root } from 'native-base';
 import {Provider} from 'react-redux';
 import storage from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -55,6 +56,7 @@ const App = (props) => {
             <Stack.Screen name="BookDetail" component={BookDetail} options={{headerShown: false}}/>
             <Stack.Screen name="AddBook" component={AddBook} options={{ headerShown: false }}/>
             <Stack.Screen name="EditBook" component={EditBook} options={{ headerShown: false }}/>
+            <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }}/>
           </Stack.Navigator>
           </Root>
         </NavigationContainer>
