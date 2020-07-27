@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+console.disableYellowBox = true;
 import Card from '../components/card'
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, ToastAndroid} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import { connect } from 'react-redux';
+import { logout } from '../redux/actions/auth'
 import { latestBooks,newArrivals } from '../redux/actions/books';
 
 class Home extends Component {
@@ -13,33 +16,59 @@ class Home extends Component {
             day: null,
             dayName: null,
             bookNew: [],
-            bookOld: []
+            bookOld: [],
+            isLoading: false
         }
+    }
+
+    logout = () => {
+        this.props
+        .logout()
+            ToastAndroid.showWithGravity(
+                "Logout Success",
+                ToastAndroid.LONG,
+                ToastAndroid.CENTER
+            );
+            return this.goToLogin();
+    };
+
+    goToLogin = () =>{
+        this.props.navigation.navigate('Login');
     }
 
     newArrivals = () => {
         const token = this.props.auth.data.token;
-        console.log(this.props.auth,'auth');
         this.props
         .newArrivals(token)
         .then(()=>{
             this.setState({
                 bookNew : this.props.books.dataNew
             })
-            console.log(this.props.books,'data')
         });
     }
 
     latestBooks = () => {
         const token = this.props.auth.data.token;
-        console.log(this.props.auth,'auth');
         this.props
         .latestBooks(token)
         .then(()=>{
             this.setState({
                 bookOld : this.props.books.dataOld
             })
-            console.log(this.props.books,'data')
+        });
+    }
+
+    refresh = () => {
+        const token = this.props.auth.data.token;
+        this.props.latestBooks(token)
+        this.props.newArrivals(token)
+        .then(()=>{
+            this.setState({
+                bookOld : this.props.books.dataOld,
+                bookNew : this.props.books.dataNew
+            })
+            console.log(this.state.bookOld)
+            console.log(this.state.bookNew)
         });
     }
 
@@ -60,6 +89,8 @@ class Home extends Component {
         })
     }
 
+    
+
     componentDidMount(){
         this.date();
         this.newArrivals();
@@ -67,7 +98,6 @@ class Home extends Component {
     }
     
     render() {
-        console.log(this.props)
         return (
         <View style={{flex: 1,backgroundColor: '#131212'}}>
             <View style={{flex: 2,flexDirection: 'row'}}>
@@ -79,8 +109,15 @@ class Home extends Component {
                     <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.state.monthyear}</Text>
                 </View>
                 <View style={{height:81, width:159,justifyContent:'flex-end', alignItems:'center',flexDirection:'row'}}>
+                    {this.props.auth.data.role == 1
+                    ?
                     <TouchableOpacity onPress={()=> this.props.navigation.navigate('AddBook')}><MaterialIcons name='collections-bookmark' color='white' size={30} /></TouchableOpacity>
-                    <TouchableOpacity style={{marginLeft: 15}}><MaterialIcons name='settings' color='white' size={30} /></TouchableOpacity>
+                    :
+                    <>
+                    </>
+                    }
+                    <TouchableOpacity onPress={this.refresh} style={{marginLeft: 15}}><MaterialIcons name='refresh' color='white' size={30} /></TouchableOpacity>
+                    <TouchableOpacity onPress={this.logout} style={{marginLeft: 15}}><MaterialIcons name='exit-to-app' color='white' size={30} /></TouchableOpacity>
                 </View>
             </View>
             <View style={{flex: 1, flexDirection: "row"}}>
@@ -130,7 +167,7 @@ const mapStateToProps = state =>({
     books: state.books
 });
 
-const mapDispatchToProps = { latestBooks,newArrivals };
+const mapDispatchToProps = { latestBooks, newArrivals, logout };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);
 
