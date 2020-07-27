@@ -5,7 +5,6 @@ import { API_URL } from '@env';
 export default class card extends Component {
     constructor(props){
         super(props);
-        console.log(this.props.data.id)
     }
     render() {
         return (
