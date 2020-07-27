@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View ,Image ,Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { View ,Image ,Text, ImageBackground, TouchableOpacity, ToastAndroid } from 'react-native';
 import { Form, Item, Input, Label, Button, Toast } from 'native-base';
 import KeyboardListener from 'react-native-keyboard-listener';
 
@@ -20,7 +20,6 @@ class Signup extends Component {
         role: 0,
         showToast: false,
     };
-    console.log(this.state,['coba'])
   }
 
   signupUser = (e) => {
@@ -33,19 +32,20 @@ class Signup extends Component {
     this.props
       .register(data)
       .then((res) => {
-        console.log(res);
-        Toast.show({
-          text: 'Register Success',
-          position: 'bottom',
-        });
+        ToastAndroid.showWithGravity(
+          "Register Success",
+          ToastAndroid.LONG,
+          ToastAndroid.CENTER
+        );
         return this.goToLogin();
       })
       .catch((err) => {
         console.log(err);
-        Toast.show({
-          text: 'Register Failed',
-          position: 'bottom',
-        });
+        ToastAndroid.showWithGravity(
+          "Register Failed",
+          ToastAndroid.LONG,
+          ToastAndroid.CENTER
+        );
       });
   };
 
@@ -57,14 +57,12 @@ class Signup extends Component {
     this.setState({
       keyboardOpen: 'open'
     });
-    console.log(this.state.keyboardOpen)
   }
 
   _onKeyboardWillHide = () => {
     this.setState({
       keyboardOpen: 'close'
     });
-    console.log(this.state.keyboardOpen)
   }
 
   render() {

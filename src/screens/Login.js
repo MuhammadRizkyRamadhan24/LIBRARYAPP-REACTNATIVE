@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View ,Image ,Text, ImageBackground, TouchableOpacity, AsyncStorage } from 'react-native';
+import { View ,Image ,Text, ImageBackground, TouchableOpacity, ToastAndroid } from 'react-native';
 import { Form, Item, Input, Label, Button , Toast } from 'native-base';
 import KeyboardListener from 'react-native-keyboard-listener';
 
@@ -30,7 +30,6 @@ class Login extends Component {
     this.props
       .login(data)
       .then((res) => {
-        console.log(res);
         if(this.props.auth.isLoading == true){
           return(
             <View style={{flex: 1,backgroundColor: '#131212',justifyContent:'center',alignItems:'center'}}>
@@ -38,20 +37,21 @@ class Login extends Component {
             </View>
           )
         } else {
-          Toast.show({
-            text: 'Login Success',
-            position: 'bottom',
-          });
+          ToastAndroid.showWithGravity(
+            "Login success",
+            ToastAndroid.LONG,
+            ToastAndroid.CENTER
+          );
           return this.goToDashboard();
         }
         })
         .catch((err) => {
         console.log(err);
-        console.log(err.response);
-        Toast.show({
-          text: 'Username or Password is Invalid',
-          position: 'bottom',
-          });
+        ToastAndroid.showWithGravity(
+          "Username or password is invalid",
+          ToastAndroid.LONG,
+          ToastAndroid.CENTER
+        );
         });
   };
 
@@ -97,12 +97,12 @@ class Login extends Component {
         <Text style={styles.formTitle}>Login</Text>
         <View style={styles.formBox}>
             <Form style={styles.form}>
-              <Item>
+              <Item last>
                 <Label style={styles.formLabel}>Username</Label>
                 <Input value={this.state.username} onChangeText={(val) => this.setState({username: val})} style={styles.formInput}/>
               </Item>
-              <Item>
-                <Label style={styles.formLabel}>Password</Label>
+              <Item last>
+                <Label style={styles.formLabel}>Password </Label>
                 <Input value={this.state.password} onChangeText={(val) => this.setState({password: val})} secureTextEntry={true} style={styles.formInput}/>
               </Item>
               <Button style={styles.button} block onPress={this.loginUser}>
