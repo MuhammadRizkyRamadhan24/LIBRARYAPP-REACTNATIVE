@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Image, ScrollView, ImageBackground } from 'react-native';
-import { Button, Spinner } from 'native-base'
+import { Text, View, TouchableOpacity, Image, ScrollView, ImageBackground, ToastAndroid } from 'react-native';
+import { Button, Spinner } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import background from '../public/images/auth-background.jpg';
 import { API_URL } from '@env';
 
 import { connect } from 'react-redux';
-import { getBookById } from '../redux/actions/books';
+import { getBookById, deleteDataById } from '../redux/actions/books';
+import { borrowBook } from '../redux/actions/borrow';
 
 export class BookDetail extends Component {
     constructor(props){
@@ -15,23 +16,56 @@ export class BookDetail extends Component {
             book:[],
             isLoadingContent: true
         }
-        console.log(this.props.route.params.id)
     }
 
     getBook = () => {
         const token = this.props.auth.data.token;
-        console.log(this.props.auth,'auth');
-        const id = this.props.route.params.id
+        const id = this.props.route.params.id;
         this.props
         .getBookById(token, id)
         .then(()=>{
-            console.log(this.props.books)
             this.setState({
                 isLoadingContent: this.props.books.isLoading,
                 book : this.props.books.dataById
             })
-            console.log(this.state.isLoadingContent)
         });
+    }
+
+    deleteBook = () => {
+        const token = this.props.auth.data.token
+        const id = this.props.route.params.id
+        this.props
+        .deleteDataById(token, id).then(() => {
+                ToastAndroid.showWithGravity(
+                "Delete success",
+                ToastAndroid.LONG,
+                ToastAndroid.CENTER
+                )
+                return this.goToDashboard();
+        });
+    }
+
+    borrowBook = () => {
+        const title = this.state.book[0].title
+        const token = this.props.auth.data.token
+        const username = this.props.auth.data.username
+        const data = {
+            title: title,
+            username: username
+        }
+        this.props
+        .borrowBook(token, data).then(() => {
+                ToastAndroid.showWithGravity(
+                "Borrow success",
+                ToastAndroid.LONG,
+                ToastAndroid.CENTER
+                );
+                return this.goToDashboard();
+        });
+    }
+
+    goToDashboard = () =>{
+        this.props.navigation.goBack();
     }
 
     componentDidMount(){
@@ -56,8 +90,15 @@ export class BookDetail extends Component {
                         <Text style={{fontFamily: 'Gotham_Medium',fontSize:26,color:'white'}}>Detail Book</Text>
                     </View>
                     <View style={{backgroundColor:'black' ,height:77,width:81, justifyContent:'flex-end',alignItems: 'center',flexDirection:'row'}}>
-                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('EditBook')} style={{marginRight:15}}><MaterialIcons name='library-books' color='white' size={24} /></TouchableOpacity>
-                        <TouchableOpacity><MaterialIcons name='delete' color='white' size={24} /></TouchableOpacity>
+                    {this.props.auth.data.role == 1
+                    ?
+                    <View style={{backgroundColor:'black' ,height:77,width:81, justifyContent:'flex-end',alignItems: 'center',flexDirection:'row'}}>
+                        <TouchableOpacity onPress={()=> this.props.navigation.navigate('EditBook',{id: this.props.route.params.id})} style={{marginRight:15}}><MaterialIcons name='library-books' color='white' size={24} /></TouchableOpacity>
+                        <TouchableOpacity onPress={this.deleteBook}><MaterialIcons name='delete' color='white' size={24} /></TouchableOpacity>
+                    </View>
+                    :
+                    <View style={{backgroundColor:'black' ,height:77,width:81, justifyContent:'flex-end',alignItems: 'center',flexDirection:'row'}}/>
+                    }
                     </View>
                 </View>
                 <View style={{flex: 8}}>
@@ -85,7 +126,7 @@ export class BookDetail extends Component {
                 <View style={{flex: 1,justifyContent:"center"}}>
                     {this.state.book[0].status == 'ada' || this.state.book[0].status == 'Ada'
                     ?
-                    <Button style={{width:369,marginLeft:27,backgroundColor:'#34C759',borderRadius:30}} block onPress={()=> this.props.navigation.navigate('Home')}>
+                    <Button onPress={this.borrowBook} style={{width:369,marginLeft:27,backgroundColor:'#34C759',borderRadius:30}} block>
                         <Text style={{fontFamily: 'SanFranciscoPro',fontSize:20,color:'white'}}>Borrow</Text>
                     </Button>
                     :
@@ -103,9 +144,10 @@ export class BookDetail extends Component {
 
 const mapStateToProps = state =>({
     auth: state.auth,
-    books: state.books
+    books: state.books,
+    borrow: state.borrow
 });
 
-const mapDispatchToProps = { getBookById };
+const mapDispatchToProps = { getBookById, deleteDataById, borrowBook };
 
 export default connect(mapStateToProps,mapDispatchToProps)(BookDetail);
