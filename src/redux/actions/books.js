@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '@env';
+
 export const newArrivals = (token) => {
   return {
     type: 'NEWARRIVALS',
@@ -39,12 +40,12 @@ export const getBookById = (token, id) => {
     };
 };
 
-export const getSearch = (token, search, order, sort, limit, page) =>{
+export const getSearch = (token, search, page) =>{
   return {
       type: 'SEARCH',
       payload:  axios({
                method: 'GET',
-               url: `http://localhost:3000/books/search?search=${search}&order=${order}&sort=${sort}&limit=${limit}&page=${page}`,
+               url: API_URL + `books/search?search=${search}&order=title&sort=asc&limit=4&page=${page}`,
                headers: {
                    Authorization: token
                }
@@ -52,29 +53,31 @@ export const getSearch = (token, search, order, sort, limit, page) =>{
   };
 };
 
-export const addBook = (token, formData) =>{
+export const addBook = (formdata, token) =>{
   return {
       type: 'ADDBOOK',
       payload: axios({
           method: 'POST',
-          url: 'http://localhost:3000/books',
-          data: formData,
+          url: API_URL + 'books',
+          data: formdata,
           headers: {
+            Accept: 'application/json',
             'Content-Type': 'multipart/form-data',
-            Authorization: token
+            Authorization: token,
           }
       })
   };
 };
 
-export const editBook = (token, formData, id) =>{
+export const editBook = (token, formdata, id) =>{
   return {
       type: 'EDITBOOK',
       payload: axios({
           method: 'PUT',
-          url: `http://localhost:3000/books/${id}`,
-          data: formData,
+          url: API_URL + `books/${id}`,
+          data: formdata,
           headers: {
+            Accept: 'application/json',
             'Content-Type': 'multipart/form-data',
             Authorization: token
           }
@@ -87,7 +90,7 @@ export const deleteDataById = (token, id) => {
       type: 'DELETEDATABYID',
       payload: axios({
           method: 'DELETE',
-          url:`http://localhost:3000/books/${id}`,
+          url:API_URL + `books/${id}`,
           headers: {
               Authorization: token
           }
