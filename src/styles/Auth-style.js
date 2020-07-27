@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     formBox: {
         width: 400,
-        height: 235,
+        height: 205,
         backgroundColor:'rgba(0, 0, 0, 0.5)',
         borderRadius: 30
     },
