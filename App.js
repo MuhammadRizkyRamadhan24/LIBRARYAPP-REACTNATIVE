@@ -58,6 +58,7 @@ const App = (props) => {
             <Stack.Screen name="AddBook" component={AddBook} options={{ headerShown: false }}/>
             <Stack.Screen name="EditBook" component={EditBook} options={{ headerShown: false }}/>
             <Stack.Screen name="History" component={History} options={{ headerShown: false }}/>
+            
           </Stack.Navigator>
           </Root>
         </NavigationContainer>
