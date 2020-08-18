@@ -20,17 +20,17 @@ class cardHistory extends Component {
         }
         this.props
         .returnBook(token, data).then(() => {
-                ToastAndroid.showWithGravity(
-                "Return success",
-                ToastAndroid.LONG,
-                ToastAndroid.CENTER
-                );
-                return this.goToDashboard();
+            ToastAndroid.showWithGravity(
+            "Return success",
+            ToastAndroid.LONG,
+            ToastAndroid.CENTER
+            );
+            return this.goToHistory();
         });
     }
 
-    goToDashboard = () =>{
-        this.props.navigation.push('Dashboard');
+    goToHistory = () =>{
+        this.props.navigation.replace('History');
     }
 
     render() {

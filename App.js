@@ -5,11 +5,13 @@ import Search from './src/screens/Search';
 import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
 import History from './src/screens/History';
+import Profile from './src/screens/Profile';
 import BookDetail from './src/screens/BookDetail';
 import AddBook from './src/screens/Add';
 import EditBook from './src/screens/Edit';
-import { Root } from 'native-base';
+import Settings from './src/screens/Settings'
 
+import { Root } from 'native-base';
 import {Provider} from 'react-redux';
 import storage from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -35,7 +37,7 @@ const BottomTab = () =>{
       barStyle={{ backgroundColor: 'black' }}>
         <Tab.Screen name="Home" component={Home} options={{tabBarLabel: 'Home', tabBarIcon: ({ color }) => ( <MaterialCommunityIcons name="home-variant" color={color} size={26} /> ),}}/>
         <Tab.Screen name="Search" component={Search} options={{ tabBarLabel: 'Search', tabBarIcon: ({ color }) => ( <MaterialIcons name="search" color={color} size={26} /> ),}}/>
-        <Tab.Screen name="History" component={History} options={{ tabBarLabel: 'History', tabBarIcon: ({ color }) => ( <MaterialCommunityIcons name="book" color={color} size={26} /> ),}}/>
+        <Tab.Screen name="Profile" component={Profile} options={{ tabBarLabel: 'History', tabBarIcon: ({ color }) => ( <MaterialCommunityIcons name="book" color={color} size={26} /> ),}}/>
       </Tab.Navigator>
     </>
   )
@@ -55,6 +57,7 @@ const App = (props) => {
             <Stack.Screen name="BookDetail" component={BookDetail} options={{headerShown: false}}/>
             <Stack.Screen name="AddBook" component={AddBook} options={{ headerShown: false }}/>
             <Stack.Screen name="EditBook" component={EditBook} options={{ headerShown: false }}/>
+            <Stack.Screen name="History" component={History} options={{ headerShown: false }}/>
           </Stack.Navigator>
           </Root>
         </NavigationContainer>

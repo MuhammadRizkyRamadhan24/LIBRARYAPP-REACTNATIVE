@@ -4,7 +4,7 @@ import { Form, Item, Input, Label, Button , Toast } from 'native-base';
 import KeyboardListener from 'react-native-keyboard-listener';
 
 import styles from '../styles/Auth-style';
-import background from '../public/images/auth-background.jpg';
+import background from '../public/images/background.jpg';
 import logo from '../public/images/logo-auth.png';
 
 import { connect } from 'react-redux';

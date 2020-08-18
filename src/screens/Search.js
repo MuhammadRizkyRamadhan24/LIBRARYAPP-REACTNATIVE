@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, ScrollView, TextInput, Text, ToastAndroid} from 'react-native';
+import { View, ScrollView, TextInput, Text, ToastAndroid, ImageBackground } from 'react-native';
 import { Item, Input } from 'native-base';
 import Card from '../components/cardSearch';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import background from '../public/images/background.jpg';
 
 import { connect } from 'react-redux';
 import { getSearch } from '../redux/actions/books';
@@ -104,7 +105,7 @@ class Search extends Component {
             );
         };
         return (
-            <View style={{flex: 1,backgroundColor: '#131212'}}>
+            <ImageBackground source={background} style={{flex: 1,backgroundColor: '#131212'}}>
                 <View style={{height:77,justifyContent:'center',alignItems:'center'}}>
                     <Item rounded style={{height:50,width:370}}>
                         <MaterialIcons style={{marginLeft:15}} color='white' name='search' size={24} />
@@ -132,7 +133,7 @@ class Search extends Component {
                     <Text style={{fontFamily:'Gotham_Medium',fontSize:24,color:'white',marginVertical:20}}>What are you looking for?</Text>
                 </View>
                 }
-            </View>
+            </ImageBackground>
         )
     }
 }

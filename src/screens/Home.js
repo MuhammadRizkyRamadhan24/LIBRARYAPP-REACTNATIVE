@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 console.disableYellowBox = true;
 import Card from '../components/card'
-import {View, Text, TouchableOpacity, ScrollView, ToastAndroid} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, ToastAndroid, ImageBackground } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import background from '../public/images/background.jpg';
 
 import { connect } from 'react-redux';
-import { logout } from '../redux/actions/auth'
+import { logout } from '../redux/actions/auth';
 import { latestBooks,newArrivals } from '../redux/actions/books';
 
 class Home extends Component {
@@ -72,52 +73,21 @@ class Home extends Component {
         });
     }
 
-    date = () =>{
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
-        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        const dateObj = new Date();
-        const month = monthNames[dateObj.getUTCMonth()]; //months from 1-12
-        const dayName = days[dateObj.getDay()];
-        const day = dateObj.getUTCDate();
-        const year = dateObj.getUTCFullYear();
-        const monthyear = `${month} ${year}`;
-        this.setState({
-            dayName : dayName,
-            monthyear: monthyear,
-            day: day
-        })
-    }
-
-    
-
     componentDidMount(){
-        this.date();
         this.newArrivals();
         this.latestBooks();
     }
     
     render() {
         return (
-        <View style={{flex: 1,backgroundColor: '#131212'}}>
+        <ImageBackground source={background} style={{flex: 1,backgroundColor: '#131212'}}>
             <View style={{flex: 2,flexDirection: 'row'}}>
-                <View style={{height:81, width:80,marginLeft:27,justifyContent: 'center',alignItems: 'center'}}>
-                    <Text style={{fontFamily: 'Gotham_Medium',fontSize: 70,color: 'white'}}>{this.state.day}</Text>                
-                </View>
-                <View style={{height:81, width:130,justifyContent: 'center',flexDirection: 'column'}}>                
-                    <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.state.dayName}</Text>
-                    <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.state.monthyear}</Text>
+                <View style={{height:81, width:210,marginLeft:27,justifyContent: 'center',flexDirection: 'column'}}>                
+                    <Text style={{fontFamily:'Gotham_Medium',fontSize:26,marginLeft:5,color: 'white'}}>Welcome,</Text>
+                    <Text style={{fontFamily:'Gotham_Medium',fontSize:24,marginLeft:5,color: 'white'}}>{this.props.auth.data.username}</Text>
                 </View>
                 <View style={{height:81, width:159,justifyContent:'flex-end', alignItems:'center',flexDirection:'row'}}>
-                    {this.props.auth.data.role == 1
-                    ?
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('AddBook')}><MaterialIcons name='collections-bookmark' color='white' size={30} /></TouchableOpacity>
-                    :
-                    <>
-                    </>
-                    }
                     <TouchableOpacity onPress={this.refresh} style={{marginLeft: 15}}><MaterialIcons name='refresh' color='white' size={30} /></TouchableOpacity>
-                    <TouchableOpacity onPress={this.logout} style={{marginLeft: 15}}><MaterialIcons name='exit-to-app' color='white' size={30} /></TouchableOpacity>
                 </View>
             </View>
             <View style={{flex: 1, flexDirection: "row"}}>
@@ -158,7 +128,7 @@ class Home extends Component {
                     })}
                 </ScrollView>
             </View>
-        </View>
+        </ImageBackground>
         )
     }
 }

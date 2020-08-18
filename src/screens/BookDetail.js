@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Image, ScrollView, ImageBackground, ToastAndroid } from 'react-native';
 import { Button, Spinner } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import background from '../public/images/auth-background.jpg';
+import background from '../public/images/background.jpg';
 import { API_URL } from '@env';
 
 import { connect } from 'react-redux';
@@ -81,7 +81,7 @@ export class BookDetail extends Component {
                 <Spinner color='white' />
             </ImageBackground>
             :
-            <View style={{flex: 1,backgroundColor: '#131212'}}>
+            <ImageBackground source={background} style={{flex: 1,backgroundColor: '#131212'}}>
                 <View style={{flex: 1,flexDirection: 'row',backgroundColor: 'black'}}>
                     <View style={{height:77,width:81,marginLeft:27,justifyContent:'center'}}>
                         <TouchableOpacity onPress={()=> this.props.navigation.goBack()}><MaterialIcons color='white' name='arrow-back' size={24} /></TouchableOpacity>
@@ -135,7 +135,7 @@ export class BookDetail extends Component {
                     </Button>
                     }
                 </View>
-            </View>
+            </ImageBackground>
             }
             </>  
         )

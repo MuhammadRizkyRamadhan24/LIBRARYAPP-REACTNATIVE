@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { register } from '../redux/actions/auth';
 
 import styles from '../styles/Auth-style';
-import background from '../public/images/auth-background.jpg';
+import background from '../public/images/background.jpg';
 import logo from '../public/images/logo-auth.png';
 
 class Signup extends Component {

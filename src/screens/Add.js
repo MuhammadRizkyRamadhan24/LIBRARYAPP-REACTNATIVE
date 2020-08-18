@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Picker, TextInput, ImageBackground, Image, StyleSheet , ToastAndroid} from 'react-native';
+import { Text, View, TouchableOpacity, Picker, TextInput, ImageBackground, Image, StyleSheet , ToastAndroid,} from 'react-native';
 import { Form, Item, Input, Button , Toast } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import background from '../public/images/auth-background.jpg';
+import background from '../public/images/background.jpg';
 
 import ImagePicker from 'react-native-image-picker';
 import {connect} from 'react-redux';
