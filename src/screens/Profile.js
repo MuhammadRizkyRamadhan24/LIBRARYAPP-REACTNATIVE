@@ -104,7 +104,12 @@ class History extends Component {
                 </View> 
                 <View style={{flex: 4,marginHorizontal:27,justifyContent:'center',alignItems:'center'}}>
                     
-                <View style={{height: 200, width: 285,flexDirection:'row',alignItems:'center'}}>
+                    {this.state.history == undefined ? 
+                    (<View>
+                        <Text style={{fontFamily: 'Gotham_Medium', color: 'white', fontSize: 28}}>You haven't borrowed yet</Text>
+                    </View>)
+                    :
+                    (<View style={{height: 200, width: 285,flexDirection:'row',alignItems:'center'}}>
                     <Image source={{uri: API_URL + `static/images/${this.state.history.bookImage}`}} style={{height: 200, width: 135, resizeMode: "contain", borderRadius: 10, elevation: 5}}/>
                     <View style={{marginLeft:20,justifyContent:'center'}}>
                         <Text style={{fontFamily: 'Gotham_Medium', color: 'white', fontSize: 28,marginTop:8,marginBottom:20,width:150}}>{this.state.history.title}</Text>
@@ -116,10 +121,10 @@ class History extends Component {
                         <Button onPress={this.returnBook} style={{width:100,backgroundColor:'#34C759',borderRadius:30}} block>
                             <Text style={{fontFamily: 'SanFranciscoPro',fontSize:18,color:'#838388'}}>Return</Text>
                         </Button>
-                        }   
-                        
+                        }
                     </View>
-                </View>
+                </View>)
+                    }
                 </View> 
             </ImageBackground>
         )
